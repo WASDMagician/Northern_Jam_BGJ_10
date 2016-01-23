@@ -11,16 +11,34 @@ public class roamtest : MonoBehaviour {
     private int roamPositionIndex = 0;
     private Vector3 currentPosition;
     public bool isAtPosition = false;
+    public bool playerSpotted = false;
+
+    private Player_Controller player_controller;
 
     void Start () {
         agent = GetComponent<NavMeshAgent>();
+        player_controller = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Controller>();
         startPosition = transform.position;
 	}
-	
-	void Update () {
+
+    void Update()
+    {
         //agent.SetDestination(target.position);
-        Roam();
-	}
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            playerSpotted = !playerSpotted;
+        }
+
+        if (!playerSpotted)
+        {
+            Roam();
+        }
+        else if (playerSpotted)
+        {
+            Chase();
+        }
+    }
 
     void Roam()
     {
@@ -39,13 +57,21 @@ public class roamtest : MonoBehaviour {
             else if (!isAtPosition)
             {
                 isAtPosition = true;
-                StartCoroutine(Wait(5.0f));
+                //random timer on wait
+                StartCoroutine(Wait(Random.Range(2.0f, 8.0f)));
             }
         }
         else if(position != startPosition)
         {
             agent.SetDestination(startPosition);
         }
+    }
+
+    void Chase()
+    {
+        Vector3 playerPosition = player_controller.transform.position;
+        // Enemy needs to lose interest
+        agent.SetDestination(playerPosition);
     }
 
     IEnumerator Wait(float duration)
