@@ -52,6 +52,7 @@ public class roamtest : MonoBehaviour {
         {
             Vector3 destination = roamPositions[roamPositionIndex];
 
+            //Debug.Log(roamPositionIndex);
             //Debug.Log("destination " + destination + " position " + position);
 
             if (destination != position && currentPosition != destination)
@@ -59,6 +60,7 @@ public class roamtest : MonoBehaviour {
                 agent.SetDestination(destination);
                 currentPosition = destination;
                 isAtPosition = false;
+                Debug.Log("test");
             }
             else if (position == destination && !isAtPosition)
             {
@@ -68,10 +70,16 @@ public class roamtest : MonoBehaviour {
             }
             else if (destination != position && !isAtPosition)
             {
-                isAtPosition = true;
+                // isAtPosition = true;
                 //random timer on wait
-                StartCoroutine(Wait(1.0f));
+                //StartCoroutine(Wait(1.0f));
+
+                //if chased and no longer chasing - return back to normal path
+                agent.SetDestination(destination);
+                currentPosition = destination;
+                isAtPosition = false;
             }
+
         }
         else if(position != startPosition)
         {
@@ -83,9 +91,10 @@ public class roamtest : MonoBehaviour {
     public void Chase()
     {
         Vector3 playerPosition = player_controller.transform.position;
-        agent.speed = 4.0f;
+        agent.speed = 5.0f;
         // Enemy needs to lose interest
         agent.SetDestination(playerPosition);
+        isAtPosition = false;
     }
 
     IEnumerator Wait(float duration)
