@@ -44,6 +44,7 @@ public class grapple_hook_control : MonoBehaviour {
     void Move()
     {
         float distance = Vector3.Distance(transform.position, transform.parent.transform.position);
+        print(distance);
         if(distance < max_length && extending)
         {
             body.MovePosition(transform.position + transform.forward * (speed * Time.deltaTime));
@@ -65,7 +66,6 @@ public class grapple_hook_control : MonoBehaviour {
             extending = false;
             retracting = false;
         }
-        
     }
 
     void OnTriggerEnter(Collider col)
