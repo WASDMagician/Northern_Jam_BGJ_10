@@ -918,6 +918,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 563145260}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &704205577 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11426306, guid: b423a93b237a75a44a13adf953c665a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1138663881}
+  m_Script: {fileID: 11500000, guid: 4fefbc80547c11846859581b165a89e5, type: 3}
 --- !u!1 &722485168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1262,14 @@ Prefab:
       propertyPath: snap_distance
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11426306, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
+      propertyPath: hook_distance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403806, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
+      propertyPath: grapple_hook
+      value: 
+      objectReference: {fileID: 704205577}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
   m_IsPrefabParent: 0
