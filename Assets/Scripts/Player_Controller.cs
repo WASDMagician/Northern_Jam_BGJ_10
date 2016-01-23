@@ -43,7 +43,6 @@ public class Player_Controller : MonoBehaviour {
 	{
         if (grapple_hook.hook_shot)
         {
-            print("Blah");
         }
         else
         {
