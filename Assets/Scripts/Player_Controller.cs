@@ -56,7 +56,7 @@ public class Player_Controller : MonoBehaviour {
 	{
 		if (!grapple_hook.has_fired)
 		{
-			if (Input.GetButton("Fire1"))
+			if (Input.GetButtonDown("Fire1"))
 			{
 				grapple_hook.Fire();
 			}
