@@ -135,6 +135,4 @@ public class grapple_hook_control : MonoBehaviour
             }
         }
     }
-
-
 }
