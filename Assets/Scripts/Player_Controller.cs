@@ -19,9 +19,9 @@ public class Player_Controller : MonoBehaviour {
 	public float strafe_speed; //base sideways speed
 	public float crawl_mod; //modify to crawl
 	public float run_mod; //modify to run
-	public float jump_speed;
-
-	private bool jumping;
+	public float initial_jump_force; //how hard does the player jump
+	private float current_jump_force;
+	private float gravity = 9.81f;
 
 	private CharacterController controller;
 
@@ -41,27 +41,68 @@ public class Player_Controller : MonoBehaviour {
 	{
 		if(!controller.isGrounded)
 		{
-			float grav_speed = 9.81f * Time.deltaTime;
+			float grav_speed = gravity * Time.deltaTime;
 			controller.Move(new Vector3(0, -grav_speed, 0));
+		}
+		else
+		{
+			current_jump_force = 0.0f;
 		}
 	}
 
 	void Handle_Input()
 	{
+		
+		//movement
 		if (controller.isGrounded)
 		{
-			//movement
-			//vertical axis (W S)
-			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				controller.Move(transform.forward * ((Input.GetAxis("Vertical") * base_speed) * Time.deltaTime));
-			}
-			//horizontal axis (A D)
-			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-			{
-				controller.Move(transform.right * ((Input.GetAxis("Horizontal") * strafe_speed) * Time.deltaTime));
+				current_jump_force = initial_jump_force;
 			}
 		}
+
+		//vertical axis (W S)
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+		{
+			float current_speed = base_speed;
+			if(controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
+			{
+				current_speed += crawl_mod;
+			}
+			else if(controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+			{
+				current_speed += run_mod;
+			}
+			//use transform.forward without y axis
+			Vector3 movement = transform.forward * ((Input.GetAxis("Vertical") * current_speed) * Time.deltaTime);
+			movement.y = 0;
+			controller.Move(movement);
+		}
+		//horizontal axis (A D)
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+		{
+			float current_strafe_speed = strafe_speed;
+			if(controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
+			{
+				current_strafe_speed += crawl_mod;
+			}
+			else if(controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+			{
+				current_strafe_speed += run_mod;
+			}
+			//use transform.right without y axis
+			Vector3 movement = transform.right * ((Input.GetAxis("Horizontal") * current_strafe_speed) * Time.deltaTime);
+			movement.y = 0;
+			controller.Move(movement);
+		}
+
+		
+
+		float up_amount = current_jump_force * Time.deltaTime;
+		controller.Move(new Vector3(0, up_amount, 0));
+		current_jump_force -= (gravity * Time.deltaTime);
+		
 		//mouse
 		Screen.lockCursor = lockCursor;
 
@@ -98,5 +139,6 @@ public class Player_Controller : MonoBehaviour {
 
 		var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
 		transform.localRotation *= yRotation;
+		print(controller.isGrounded);
 	}
 }
