@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player_Controller : MonoBehaviour {
 
-    public grapple_hook_control grapple_hook;
+	public grapple_hook_control grapple_hook;
 
 	//mouse movement
 	Vector2 _mouseAbsolute;
@@ -54,7 +54,14 @@ public class Player_Controller : MonoBehaviour {
 
 	void Handle_Input()
 	{
-		
+		if (!grapple_hook.has_fired)
+		{
+			if (Input.GetButton("Fire1"))
+			{
+				grapple_hook.Fire();
+			}
+        }
+
 		//movement
 		if (controller.isGrounded)
 		{
@@ -68,11 +75,11 @@ public class Player_Controller : MonoBehaviour {
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
 		{
 			float current_speed = base_speed;
-			if(controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
+			if (controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
 			{
 				current_speed += crawl_mod;
 			}
-			else if(controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+			else if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
 			{
 				current_speed += run_mod;
 			}
@@ -85,11 +92,11 @@ public class Player_Controller : MonoBehaviour {
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
 		{
 			float current_strafe_speed = strafe_speed;
-			if(controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
+			if (controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
 			{
 				current_strafe_speed += crawl_mod;
 			}
-			else if(controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+			else if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
 			{
 				current_strafe_speed += run_mod;
 			}
@@ -99,11 +106,13 @@ public class Player_Controller : MonoBehaviour {
 			controller.Move(movement);
 		}
 
-		
+
 
 		float up_amount = current_jump_force * Time.deltaTime;
 		controller.Move(new Vector3(0, up_amount, 0));
 		current_jump_force -= (gravity * Time.deltaTime);
+
+
 		
 		//mouse
 		Screen.lockCursor = lockCursor;
@@ -141,6 +150,7 @@ public class Player_Controller : MonoBehaviour {
 
 		var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
 		transform.localRotation *= yRotation;
-		//print(controller.isGrounded);
+		
+		
 	}
 }
