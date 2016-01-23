@@ -47,9 +47,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ChangeLevel.cs" />
      <Compile Include="Assets\Scripts\DetectPlayer.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\MovingPlatform\MovingPlatform.cs" />
+     <Compile Include="Assets\Scripts\MovingPlatform\PlatformLever.cs" />
      <Compile Include="Assets\Scripts\OpenDoors.cs" />
      <Compile Include="Assets\Scripts\Player_Controller.cs" />
      <Compile Include="Assets\Scripts\WSTextLookAt.cs" />
+     <Compile Include="Assets\grapple_hook_control.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
