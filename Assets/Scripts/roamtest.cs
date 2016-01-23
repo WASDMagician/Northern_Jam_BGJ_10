@@ -19,7 +19,7 @@ public class roamtest : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         player_controller = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Controller>();
         startPosition = transform.position;
-        agent.speed = Random.Range(2.0f, 4.0f);
+        agent.speed = Random.Range(2.0f, 3.0f);
     }
 
     void Update()
@@ -44,7 +44,7 @@ public class roamtest : MonoBehaviour {
         }
     }
 
-    void Roam()
+    public void Roam()
     {
         Vector3 position = transform.position;
         //agent.speed = Random.Range(2.0f, 4.0f);
@@ -52,7 +52,7 @@ public class roamtest : MonoBehaviour {
         {
             Vector3 destination = roamPositions[roamPositionIndex];
 
-            Debug.Log("destination " + destination + " position " + position);
+            //Debug.Log("destination " + destination + " position " + position);
 
             if (destination != position && currentPosition != destination)
             { 
@@ -66,6 +66,12 @@ public class roamtest : MonoBehaviour {
                 //random timer on wait
                 StartCoroutine(Wait(Random.Range(2.0f, 4.0f)));
             }
+            else if (destination != position && !isAtPosition)
+            {
+                isAtPosition = true;
+                //random timer on wait
+                StartCoroutine(Wait(1.0f));
+            }
         }
         else if(position != startPosition)
         {
@@ -74,10 +80,10 @@ public class roamtest : MonoBehaviour {
         }
     }
 
-    void Chase()
+    public void Chase()
     {
         Vector3 playerPosition = player_controller.transform.position;
-        agent.speed = 2.0f;
+        agent.speed = 4.0f;
         // Enemy needs to lose interest
         agent.SetDestination(playerPosition);
     }
