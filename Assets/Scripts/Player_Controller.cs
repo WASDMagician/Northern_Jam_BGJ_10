@@ -139,6 +139,6 @@ public class Player_Controller : MonoBehaviour {
 
 		var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
 		transform.localRotation *= yRotation;
-		print(controller.isGrounded);
+		//print(controller.isGrounded);
 	}
 }
