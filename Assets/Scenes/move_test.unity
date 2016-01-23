@@ -1264,7 +1264,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11426306, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
       propertyPath: hook_distance
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11403806, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
       propertyPath: grapple_hook
