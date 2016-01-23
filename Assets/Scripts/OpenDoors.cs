@@ -43,8 +43,8 @@ public class OpenDoors : MonoBehaviour
     {
         for(int i = 0; i < NoOfDoorShifts; i++)
         {
-            leftDoor.position = new Vector3(leftDoor.position.x - doorShift, leftDoor.position.y, leftDoor.position.z);
-            rightDoor.position = new Vector3(rightDoor.position.x + doorShift, rightDoor.position.y, rightDoor.position.z);
+            leftDoor.localPosition = new Vector3(leftDoor.localPosition.x - doorShift, leftDoor.localPosition.y, leftDoor.localPosition.z);
+            rightDoor.localPosition = new Vector3(rightDoor.localPosition.x + doorShift, rightDoor.localPosition.y, rightDoor.localPosition.z);
             yield return new WaitForSeconds(doorDelay);
         }
     }
@@ -53,8 +53,8 @@ public class OpenDoors : MonoBehaviour
     {
         for (int i = 0; i < NoOfDoorShifts; i++)
         {
-            leftDoor.position = new Vector3(leftDoor.position.x + doorShift, leftDoor.position.y, leftDoor.position.z);
-            rightDoor.position = new Vector3(rightDoor.position.x - doorShift, rightDoor.position.y, rightDoor.position.z);
+            leftDoor.localPosition = new Vector3(leftDoor.localPosition.x + doorShift, leftDoor.localPosition.y, leftDoor.localPosition.z);
+            rightDoor.localPosition = new Vector3(rightDoor.localPosition.x - doorShift, rightDoor.localPosition.y, rightDoor.localPosition.z);
             yield return new WaitForSeconds(doorDelay);
         }
     }

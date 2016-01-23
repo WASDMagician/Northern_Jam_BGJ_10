@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/base_scenes.unity
+- path: Assets/Scenes/DaneandNiallScene.unity
   isLoaded: 1
   isActive: 1
