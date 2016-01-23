@@ -43,7 +43,7 @@ public class grapple_hook_control : MonoBehaviour {
 
     void Move()
     {
-        float distance = Vector3.Distance(transform.position, start_position);
+        float distance = Vector3.Distance(transform.position, transform.parent.transform.position);
         if(distance < max_length && extending)
         {
             body.MovePosition(transform.position + transform.forward * (speed * Time.deltaTime));
@@ -60,7 +60,7 @@ public class grapple_hook_control : MonoBehaviour {
         }
         else if(retracting && distance <= snap_dist)
         {
-            transform.position = start_position;
+            transform.position = transform.parent.transform.position;
             has_fired = false;
             extending = false;
             retracting = false;
