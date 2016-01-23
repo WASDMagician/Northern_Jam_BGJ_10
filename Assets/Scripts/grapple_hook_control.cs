@@ -64,7 +64,7 @@ public class grapple_hook_control : MonoBehaviour
     void Move()
     {
         float distance = Vector3.Distance(transform.position, transform.parent.position);
-
+        print(distance);
         Vector3 initial = transform.position;
         Vector3 move_by = initial;
         Vector3 end_position = initial;
@@ -90,12 +90,12 @@ public class grapple_hook_control : MonoBehaviour
 
         if (pull_shot || extending)
         {
-            transform.position = end_position;
+            transform.position = end_position; //moves hook back toward player
         }
         if(retracting && hook_shot)
         {
-            transform.position = end_position;
-            parent_object.transform.position = parent_object.transform.position - move_by;
+            transform.position = end_position; //moves hook back to player
+            parent_object.transform.position = parent_object.transform.position - move_by; //moves player toward object
         }
 
         if(retracting == true && hook_shot == true && distance < hook_distance)
@@ -103,6 +103,11 @@ public class grapple_hook_control : MonoBehaviour
             extending = false;
             retracting = false;
             has_fired = false;
+
+            grabbed_object.transform.parent = null;
+
+
+            transform.position = transform.parent.transform.position;
         }
 
         if (retracting == true && distance <= snap_distance)
@@ -110,12 +115,10 @@ public class grapple_hook_control : MonoBehaviour
             extending = false;
             retracting = false;
             has_fired = false;
-            for (int i = 0; i < transform.GetChildCount();i++ )
-            {
-                transform.GetChild(i).transform.parent = null;
-                i = 0;
-            }
-                transform.position = transform.parent.transform.position;
+
+            grabbed_object.transform.parent = null;
+
+            transform.position = transform.parent.transform.position;
         }
     }
 
@@ -131,6 +134,7 @@ public class grapple_hook_control : MonoBehaviour
                 if(hook_shot == true)
                 {
                     last_position = col.gameObject.transform.position;
+                    grabbed_object = col.gameObject;
                 }
             }
         }
