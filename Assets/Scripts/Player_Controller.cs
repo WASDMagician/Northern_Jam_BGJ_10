@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player_Controller : MonoBehaviour {
 
+    public grapple_hook_control grapple_hook;
+
 	//mouse movement
 	Vector2 _mouseAbsolute;
 	Vector2 _smoothMouse;
