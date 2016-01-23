@@ -5,14 +5,16 @@ public class grapple_hook_control : MonoBehaviour
 {
 
     private Rigidbody body;
-
+    public GameObject parent_object;
     public float max_distance;
     public float speed;
     public bool has_fired;
     public float snap_distance;
     bool extending;
     bool retracting;
-    bool hookshot;
+
+    bool hook_shot;
+    bool pull_shot;
 
 
     void Start()
@@ -21,12 +23,16 @@ public class grapple_hook_control : MonoBehaviour
         has_fired = false;
         extending = false;
         retracting = false;
+        hook_shot = false;
+        pull_shot = false;
     }
 
     void Update()
     {
         if (Input.GetButton("Fire1"))
         {
+            hook_shot = true;
+            pull_shot = false;
             Fire();
         }
 
