@@ -54,8 +54,6 @@ public class Player_Controller : MonoBehaviour {
 
 	void Handle_Input()
 	{
-		
-
 		//movement
 		if (controller.isGrounded)
 		{
