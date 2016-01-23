@@ -16,8 +16,8 @@ public class grapple_hook_control : MonoBehaviour
     bool extending;
     bool retracting;
 
-    bool hook_shot;
-    bool pull_shot;
+    public bool hook_shot;
+    public bool pull_shot;
 
 
     void Start()
