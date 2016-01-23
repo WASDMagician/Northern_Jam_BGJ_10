@@ -3,6 +3,12 @@
 public class DetectPlayer : MonoBehaviour
 {
     RaycastHit hit;
+    public roamtest enemy;
+
+    void Awake()
+    {
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<roamtest>();
+    }
 
     void OnTriggerStay(Collider other)
     {      
@@ -14,7 +20,12 @@ public class DetectPlayer : MonoBehaviour
             {
                 if(hit.transform.CompareTag("Player"))
                 {
+                    enemy.Chase();
                     print("here"); // do stuff - Detection logic
+                }
+                else
+                {
+                    enemy.Roam();
                 }
             }
         }
