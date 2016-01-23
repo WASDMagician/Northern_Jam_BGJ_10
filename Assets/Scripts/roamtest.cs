@@ -19,7 +19,8 @@ public class roamtest : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         player_controller = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Controller>();
         startPosition = transform.position;
-	}
+        agent.speed = Random.Range(2.0f, 4.0f);
+    }
 
     void Update()
     {
@@ -46,7 +47,7 @@ public class roamtest : MonoBehaviour {
     void Roam()
     {
         Vector3 position = transform.position;
-        agent.speed = 1.0f;
+        //agent.speed = Random.Range(2.0f, 4.0f);
         if (roamPositions != null && roamPositions.Count > 1)
         {
             Vector3 destination = roamPositions[roamPositionIndex];
@@ -63,7 +64,7 @@ public class roamtest : MonoBehaviour {
             {
                 isAtPosition = true;
                 //random timer on wait
-                StartCoroutine(Wait(Random.Range(2.0f, 8.0f)));
+                StartCoroutine(Wait(Random.Range(2.0f, 4.0f)));
             }
         }
         else if(position != startPosition)
