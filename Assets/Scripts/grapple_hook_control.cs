@@ -12,6 +12,8 @@ public class grapple_hook_control : MonoBehaviour
     public float snap_distance;
     bool extending;
     bool retracting;
+    bool hookshot;
+
 
     void Start()
     {
@@ -78,7 +80,12 @@ public class grapple_hook_control : MonoBehaviour
             extending = false;
             retracting = false;
             has_fired = false;
-            transform.position = transform.parent.transform.position;
+            for (int i = 0; i < transform.GetChildCount();i++ )
+            {
+                transform.GetChild(i).transform.parent = null;
+                i = 0;
+            }
+                transform.position = transform.parent.transform.position;
         }
     }
 
@@ -88,6 +95,7 @@ public class grapple_hook_control : MonoBehaviour
         {
             if (extending == true)
             {
+                col.transform.parent = this.transform;
                 extending = false;
                 retracting = true;
             }
