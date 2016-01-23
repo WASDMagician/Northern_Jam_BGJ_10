@@ -1,4 +1,4 @@
 sceneSetups:
-- path: F:/Personal/Unity/Jams/Bacon_Game_Jam_10 - Copy/Assets/Scenes/move_test.unity
+- path: Assets/Scenes/DaneandNiallScene.unity
   isLoaded: 1
   isActive: 1
