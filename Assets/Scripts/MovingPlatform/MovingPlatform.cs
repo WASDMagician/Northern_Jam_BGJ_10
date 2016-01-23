@@ -56,7 +56,7 @@ public class MovingPlatform : MonoBehaviour
         print("Collided");
         if(other.gameObject.CompareTag("Player"))
         {
-            player.parent = transform.parent.transform;
+            player.parent = transform;
         }
     }
 
