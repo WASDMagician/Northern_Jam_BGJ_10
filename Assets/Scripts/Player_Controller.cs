@@ -54,13 +54,7 @@ public class Player_Controller : MonoBehaviour {
 
 	void Handle_Input()
 	{
-		if (!grapple_hook.has_fired)
-		{
-			if (Input.GetButtonDown("Fire1"))
-			{
-				grapple_hook.Fire();
-			}
-        }
+		
 
 		//movement
 		if (controller.isGrounded)
