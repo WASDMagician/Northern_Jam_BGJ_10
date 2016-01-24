@@ -81,7 +81,10 @@
     <Compile Include="Assets\Scripts\MovingPlatform\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform\PlatformLever.cs" />
     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\Button.cs" />
+    <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\DestroyPlatform.cs" />
+    <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\RandomPlatforms.cs" />
     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\SlidingPlatform.cs" />
+    <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\Transparency.cs" />
     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\TrialController.cs" />
     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\TrialTargets.cs" />
     <Compile Include="Assets\Scripts\OpenDoors.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Assets\Scripts\Player_Controller.cs" />
     <Compile Include="Assets\Scripts\WSTextLookAt.cs" />
     <Compile Include="Assets\Scripts\grapple_hook_control.cs" />
+    <Compile Include="Assets\kill_zone.cs" />
     <Compile Include="Assets\pulse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
