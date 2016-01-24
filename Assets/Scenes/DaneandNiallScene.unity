@@ -5924,10 +5924,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fefbc80547c11846859581b165a89e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent_object: {fileID: 1498669123}
+  grabbed_object: {fileID: 0}
   max_distance: 25
   speed: 15
   has_fired: 0
   snap_distance: 0.5
+  hook_distance: 0
+  hook_shot: 0
+  pull_shot: 0
 --- !u!54 &837591262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7860,7 +7865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1103557138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10328,6 +10333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b586a21b49496704cad40adf250f7577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 2800000, guid: ec77722b982a5044980f65f2da06eec1, type: 3}
   grapple_hook: {fileID: 837591261}
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 0
