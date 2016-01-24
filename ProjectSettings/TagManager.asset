@@ -9,6 +9,7 @@ TagManager:
   - Pullable
   - Hookable
   - GrappleHook
+  - Spawn_Point
   layers:
   - Default
   - TransparentFX
