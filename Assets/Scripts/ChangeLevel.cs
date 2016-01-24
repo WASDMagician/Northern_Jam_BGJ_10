@@ -14,12 +14,12 @@ public class ChangeLevel : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
-    IEnumerator FadeOutLevel(string nextLevelName)
+    IEnumerator FadeOutLevel()
     {
         text.text = "Gem collected!";
         FadeOut();
         yield return new WaitForSeconds(1.5f);
-        Application.LoadLevel(nextLevelName);
+        Load_Level();
     }
 
     public void FadeOut()
@@ -35,7 +35,7 @@ public class ChangeLevel : MonoBehaviour {
     public void ChangeToLevel(string nextLevelName)
     {
         text.enabled = true;
-        StartCoroutine(FadeOutLevel(nextLevelName));
+        StartCoroutine(FadeOutLevel());
     }
 
     void Load_Level()
@@ -53,4 +53,10 @@ public class ChangeLevel : MonoBehaviour {
             Application.LoadLevel(Application.loadedLevel + 1);
         }
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        FadeOutLevel();
+    }
+    
 }
