@@ -11636,7 +11636,7 @@ Prefab:
       objectReference: {fileID: 2800000, guid: ec77722b982a5044980f65f2da06eec1, type: 3}
     - target: {fileID: 11426306, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
       propertyPath: max_distance
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 447986, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -17224,4 +17224,4 @@ Transform:
   m_LocalScale: {x: 1.9123871, y: 0.47355133, z: 1.912387}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21

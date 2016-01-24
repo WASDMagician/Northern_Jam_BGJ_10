@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11426306}
   m_Layer: 0
   m_Name: grapple_hook
-  m_TagString: Untagged
+  m_TagString: GrappleHook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ GameObject:
   - 4: {fileID: 482344}
   m_Layer: 0
   m_Name: player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.192, y: -0.076, z: 0.484}
+  m_LocalPosition: {x: 0, y: -0.076, z: 0.46}
   m_LocalScale: {x: 0.08269124, y: 0.08269121, z: 0.28287452}
   m_Children:
   - {fileID: 457848}
@@ -146,8 +146,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.05, y: -0.13, z: 0.03}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 6.22, y: 0.97, z: -84.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447986}
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b586a21b49496704cad40adf250f7577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  crosshair: {fileID: 2800000, guid: ec77722b982a5044980f65f2da06eec1, type: 3}
   grapple_hook: {fileID: 11426306}
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 0
