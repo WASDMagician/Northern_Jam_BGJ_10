@@ -6,6 +6,8 @@ public class ChangeLevel : MonoBehaviour {
 
     Animator animator;
     public Text text;
+    public string level_name = "";
+    public int level_num = -1;
 
     void Awake()
     {
@@ -34,5 +36,21 @@ public class ChangeLevel : MonoBehaviour {
     {
         text.enabled = true;
         StartCoroutine(FadeOutLevel(nextLevelName));
+    }
+
+    void Load_Level()
+    {
+        if(level_name != "")
+        {
+            Application.LoadLevel(level_name);
+        }
+        else if(level_num != -1)
+        {
+            Application.LoadLevel(level_num);
+        }
+        else
+        {
+            Application.LoadLevel(Application.loadedLevel + 1);
+        }
     }
 }

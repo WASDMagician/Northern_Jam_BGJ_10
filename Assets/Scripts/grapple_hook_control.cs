@@ -173,10 +173,13 @@ public class grapple_hook_control : MonoBehaviour
         {
             if(extending)
             {
-                grabbed_object = col.gameObject;
-                hook_pos = transform.position;
-                extending = false;
-                retracting = true;
+                if (pull_shot && (col.CompareTag("Pullable") || col.CompareTag("Enemy")) || hook_shot && (col.CompareTag("Hookable")))
+                {
+                    grabbed_object = col.gameObject;
+                    hook_pos = transform.position;
+                    extending = false;
+                    retracting = true;
+                }
             }
         }
     }
