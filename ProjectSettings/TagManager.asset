@@ -11,6 +11,8 @@ TagManager:
   - GrappleHook
   - Spawn_Point
   - FadeLevel
+  - Canvas
+  - Health
   layers:
   - Default
   - TransparentFX

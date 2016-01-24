@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2391164}
   - 54: {fileID: 5441424}
   - 114: {fileID: 11426306}
+  - 114: {fileID: 11470224}
   m_Layer: 0
   m_Name: grapple_hook
   m_TagString: GrappleHook
@@ -48,6 +49,7 @@ GameObject:
   - 4: {fileID: 447986}
   - 114: {fileID: 11403806}
   - 143: {fileID: 14307468}
+  - 114: {fileID: 11465422}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -122,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.176999, y: 28.55, z: -48.46944}
+  m_LocalPosition: {x: -111.35, y: 28.55, z: -8.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 404278}
@@ -146,8 +148,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196006}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 6.22, y: 0.97, z: -84.62}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.61, y: 10.24, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447986}
@@ -344,12 +346,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent_object: {fileID: 167008}
   grabbed_object: {fileID: 0}
-  max_distance: 25
+  max_distance: 20
   speed: 30
   has_fired: 0
   snap_distance: 2
   hook_shot: 0
   pull_shot: 0
+--- !u!114 &11465422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebceab8409d03d4188d087a21c2f77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+--- !u!114 &11470224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539a86ad7bcfb40479e175bfcbb45fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pHealth: {fileID: 0}
 --- !u!124 &12416852
 Behaviour:
   m_ObjectHideFlags: 1
