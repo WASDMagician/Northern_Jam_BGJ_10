@@ -35,13 +35,13 @@ public class TrialController : MonoBehaviour
     {
         if(passed == false)
         {
-            if (trialTargets[0].IsActivated() && trialTargets[1].IsActivated() && trialTargets[2].IsActivated())
+            /*if (trialTargets[0].IsActivated() && trialTargets[1].IsActivated() && trialTargets[2].IsActivated())
             {
                 time = 0.0f;
                 passed = true;
                 timerActive = false;
             }
-            /*else if(trialTargets[0].IsActivated() && trialTargets[1].IsActivated() || trialTargets[1].IsActivated() && trialTargets[2].IsActivated() || trialTargets[0].IsActivated() && trialTargets[2].IsActivated())
+            else if(trialTargets[0].IsActivated() && trialTargets[1].IsActivated() || trialTargets[1].IsActivated() && trialTargets[2].IsActivated() || trialTargets[0].IsActivated() && trialTargets[2].IsActivated())
             {
                 curProg++;
 
@@ -65,9 +65,10 @@ public class TrialController : MonoBehaviour
     void Timer()
     {
         time -= 0.01f;
-        if(time <= 0)
+        if(time <= 0 && passed == true)
         {
             slidingPlatform.Activate(true);
+            curProg = 0;
             for (int i = 0; i < trialTargets.Length; i++)
             {
                 trialTargets[i].Reset();
@@ -75,6 +76,20 @@ public class TrialController : MonoBehaviour
                 time = maxTime;
                 timerText.text = "Congratulations! You Passed";
                 CancelInvoke("Timer");
+                timerActive = false;
+                Invoke("KillCanvas", 5);
+            }
+        }
+        else if(time <= 0 && passed == false)
+        {
+            curProg = 0;
+            for (int j = 0; j < trialTargets.Length; j++)
+            {
+                trialTargets[j].Wait(5);
+                time = maxTime;
+                timerText.text = "You Failed...";
+                CancelInvoke("Timer");
+                timerActive = false;
                 Invoke("KillCanvas", 5);
             }
         }
@@ -102,13 +117,22 @@ public class TrialController : MonoBehaviour
 
     public void incProgress()
     {
-        if (timerActive == false)
+        if(passed == false)
         {
-            timerActive = true;
-            screenCanvas.SetActive(true);
-            InvokeRepeating("Timer", 0, 0.01f);
+            if (timerActive == false)
+            {
+                timerActive = true;
+                screenCanvas.SetActive(true);
+                InvokeRepeating("Timer", 0, 0.01f);
+            }
+            curProg++;
+            UpdateProgressBar();
+            if(curProg == trialTargets.Length)
+            {
+                passed = true;
+                time = 0.0f;
+                timerActive = false;
+            }
         }
-        curProg++;
-        UpdateProgressBar();
     }
 }
