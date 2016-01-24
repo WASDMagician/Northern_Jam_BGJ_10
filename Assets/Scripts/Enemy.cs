@@ -15,7 +15,9 @@ public class Enemy : MonoBehaviour {
     private int counter;
 
     public Player_Controller player_controller;
-    public int health;
+    public float maxHealth;
+    public float health;
+    public GameObject healthbar;
 
     void Start () {
         agent = GetComponent<NavMeshAgent>();
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour {
         startPosition = transform.position;
         agent.speed = Random.Range(2.0f, 3.0f);
         counter = 0;
+        maxHealth = 30;
         health = 30;
     }
 
@@ -129,7 +132,7 @@ public class Enemy : MonoBehaviour {
         isAtPosition = false;
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
@@ -139,12 +142,20 @@ public class Enemy : MonoBehaviour {
         health = h;
     }
 
+    public void setHealthBar(float h)
+    {
+        healthbar.transform.localScale = new Vector3(h, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
+    }
+
     public void damage(int dmg)
     {
         health -= dmg;
-        if(health <= 0)
+        float calc_health = health / maxHealth;
+        setHealthBar(calc_health);
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
     }
+
 }
