@@ -12,6 +12,7 @@ public class roamtest : MonoBehaviour {
     private Vector3 currentPosition;
     public bool isAtPosition = false;
     public bool playerSpotted = false;
+    private int counter;
 
     private Player_Controller player_controller;
 
@@ -20,6 +21,7 @@ public class roamtest : MonoBehaviour {
         player_controller = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Controller>();
         startPosition = transform.position;
         agent.speed = Random.Range(2.0f, 3.0f);
+        counter = 0;
     }
 
     void Update()
@@ -40,6 +42,17 @@ public class roamtest : MonoBehaviour {
         {
             //broken right now wont return to original starting point
             Chase();
+        }
+
+        if (agent.pathStatus == NavMeshPathStatus.PathPartial && !agent.hasPath)
+        {
+            counter++;
+        }
+
+        if (counter >= 300)
+        {
+            counter = 0;
+            playerSpotted = false;
         }
     }
 
@@ -91,13 +104,13 @@ public class roamtest : MonoBehaviour {
     {
         RotateToPlayer();
         Vector3 playerPosition = (player_controller.transform.position);
-        agent.speed = 6.0f;
+        agent.speed = 4.0f;
         agent.SetDestination(playerPosition);
     }
 
     void RotateToPlayer()
     {
-        transform.LookAt(new Vector3(player_controller.transform.position.x, player_controller.transform.position.y, player_controller.transform.position.z));
+        this.transform.LookAt(new Vector3(player_controller.transform.position.x, transform.position.y, player_controller.transform.position.z));
     }
 
     IEnumerator Wait(float duration)
