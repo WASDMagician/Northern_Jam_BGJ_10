@@ -18,7 +18,7 @@ public class Player_Controller : MonoBehaviour {
 	public Vector2 targetDirection;
 	public Vector2 targetCharacterDirection;
     CursorLockMode wanted_mode;
-
+    
 	//movement
 	public float base_speed; //base forward speed
 	public float strafe_speed; //base sideways speed
@@ -27,6 +27,7 @@ public class Player_Controller : MonoBehaviour {
 	public float initial_jump_force; //how hard does the player jump
 	private float current_jump_force;
 	private float gravity = 9.81f;
+    public float launch_velocity;
 
 	private CharacterController controller;
 
@@ -117,7 +118,7 @@ public class Player_Controller : MonoBehaviour {
         }
         else
         {
-            current_jump_force = 0;
+            current_jump_force = launch_velocity;
         }
 		current_jump_force -= (gravity * Time.deltaTime);
 

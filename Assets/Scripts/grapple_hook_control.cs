@@ -147,7 +147,7 @@ public class grapple_hook_control : MonoBehaviour
         //move player object toward grabbed object
         //parent_object.transform.position += new Vector3(0, 10, 0);
         distance = Vector3.Distance(parent_object.transform.position, hook_pos);
-        parent_object.transform.position = Vector3.Lerp(parent_object.transform.position, hook_pos, Time.deltaTime * 1.0f);
+        parent_object.transform.position = Vector3.Lerp(parent_object.transform.position, hook_pos, Time.deltaTime * (speed / 4));
         print(distance);
         if (distance < snap_distance)
         {

@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -0.37, z: 1.75}
+  m_LocalPosition: {x: -3.05, y: -0.13, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447986}
@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b586a21b49496704cad40adf250f7577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 0}
   grapple_hook: {fileID: 11426306}
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 0
@@ -329,6 +330,7 @@ MonoBehaviour:
   crawl_mod: -3
   run_mod: 3
   initial_jump_force: 15
+  launch_velocity: 18
 --- !u!114 &11426306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,10 +345,9 @@ MonoBehaviour:
   parent_object: {fileID: 167008}
   grabbed_object: {fileID: 0}
   max_distance: 25
-  speed: 15
+  speed: 30
   has_fired: 0
-  snap_distance: 4
-  hook_distance: 2
+  snap_distance: 2
   hook_shot: 0
   pull_shot: 0
 --- !u!124 &12416852
