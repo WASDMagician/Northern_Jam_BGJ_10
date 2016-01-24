@@ -20,12 +20,16 @@ public class DetectPlayer : MonoBehaviour
             {
                 if(hit.transform.CompareTag("Player"))
                 {
-                    enemy.Chase();
+                    // enemy.Chase();
+                    enemy.isAtPosition = false;
+                    enemy.playerSpotted = true;
                     print("here"); // do stuff - Detection logic
                 }
                 else
                 {
-                    enemy.Roam();
+                    //enemy.Roam();
+                    enemy.isAtPosition = false;
+                    enemy.playerSpotted = false;
                 }
             }
         }

@@ -39,7 +39,6 @@ public class roamtest : MonoBehaviour {
         else if (playerSpotted)
         {
             //broken right now wont return to original starting point
-
             Chase();
         }
     }
@@ -90,11 +89,15 @@ public class roamtest : MonoBehaviour {
 
     public void Chase()
     {
-        Vector3 playerPosition = player_controller.transform.position;
-        agent.speed = 5.0f;
-        // Enemy needs to lose interest
+        RotateToPlayer();
+        Vector3 playerPosition = (player_controller.transform.position);
+        agent.speed = 6.0f;
         agent.SetDestination(playerPosition);
-        isAtPosition = false;
+    }
+
+    void RotateToPlayer()
+    {
+        transform.LookAt(new Vector3(player_controller.transform.position.x, player_controller.transform.position.y, player_controller.transform.position.z));
     }
 
     IEnumerator Wait(float duration)
