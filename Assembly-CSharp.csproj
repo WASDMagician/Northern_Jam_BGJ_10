@@ -52,7 +52,10 @@
      <Compile Include="Assets\Scripts\MovingPlatform\MovingPlatform.cs" />
      <Compile Include="Assets\Scripts\MovingPlatform\PlatformLever.cs" />
      <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\Button.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\DestroyPlatform.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\RandomPlatforms.cs" />
      <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\SlidingPlatform.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\Transparency.cs" />
      <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\TrialController.cs" />
      <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\TrialTargets.cs" />
      <Compile Include="Assets\Scripts\OpenDoors.cs" />

@@ -6,7 +6,7 @@ public class TrialController : MonoBehaviour
 {
     public SlidingPlatform slidingPlatform;
     public TrialTargets[] trialTargets;
-    [Range(10.0f, 20.0f)]
+    [Range(10.0f, 60.0f)]
     public float time;
     public GameObject screenCanvas;
     public Text timerText;
