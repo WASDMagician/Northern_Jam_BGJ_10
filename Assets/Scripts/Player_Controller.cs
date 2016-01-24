@@ -38,6 +38,7 @@ public class Player_Controller : MonoBehaviour {
 		targetDirection = transform.localRotation.eulerAngles;
 		controller = GetComponent<CharacterController>();
         health = GetComponent<PlayerHealth>();
+        Go_To_Spawn();
 	}
 	
 	// Update is called once per frame
@@ -46,7 +47,7 @@ public class Player_Controller : MonoBehaviour {
 		Handle_Ground();
         if(health.getHealth() <= 0)
         {
-            transform.parent.position = GameObject.FindGameObjectWithTag("Spawn_Point").transform.position;
+            Go_To_Spawn();
             health.setHealth(100);
         }
 	}
@@ -170,6 +171,11 @@ public class Player_Controller : MonoBehaviour {
 		
 		
 	}
+
+    void Go_To_Spawn()
+    {
+        transform.position = GameObject.FindGameObjectWithTag("Spawn_Point").transform.position;
+    }
 
     void OnGUI()
     {
