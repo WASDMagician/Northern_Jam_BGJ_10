@@ -15,7 +15,6 @@ public class grapple_hook_control : MonoBehaviour
     public float speed;
     public bool has_fired;
     public float snap_distance;
-
     bool extending;
     bool retracting;
 
@@ -147,8 +146,8 @@ public class grapple_hook_control : MonoBehaviour
         //target is grabbed object
         //move player object toward grabbed object
         //parent_object.transform.position += new Vector3(0, 10, 0);
-        distance = Vector3.Distance(parent_object.transform.position, grabbed_object.transform.position);
-        parent_object.transform.position = Vector3.Lerp(parent_object.transform.position, grabbed_object.transform.position, Time.deltaTime * 1.0f);
+        distance = Vector3.Distance(parent_object.transform.position, hook_pos);
+        parent_object.transform.position = Vector3.Lerp(parent_object.transform.position, hook_pos, Time.deltaTime * 1.0f);
         print(distance);
         if (distance < snap_distance)
         {
@@ -175,7 +174,7 @@ public class grapple_hook_control : MonoBehaviour
             if(extending)
             {
                 grabbed_object = col.gameObject;
-                hook_pos = grabbed_object.transform.position;
+                hook_pos = transform.position;
                 extending = false;
                 retracting = true;
             }
