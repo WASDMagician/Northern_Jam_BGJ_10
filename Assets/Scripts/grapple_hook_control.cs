@@ -174,6 +174,11 @@ public class grapple_hook_control : MonoBehaviour
             {
                 if (pull_shot && (col.CompareTag("Pullable") || col.CompareTag("Enemy")) || hook_shot && (col.CompareTag("Hookable")))
                 {
+                    if(col.CompareTag("Enemy"))
+                    {
+                        Enemy enemy = col.GetComponent<Enemy>();
+                        enemy.damage(5);
+                    }
                     grabbed_object = col.gameObject;
                     hook_pos = transform.position;
                     extending = false;
