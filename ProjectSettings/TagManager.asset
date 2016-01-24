@@ -13,6 +13,8 @@ TagManager:
   - FadeLevel
   - Canvas
   - Health
+  - Menu
+  - menu
   layers:
   - Default
   - TransparentFX

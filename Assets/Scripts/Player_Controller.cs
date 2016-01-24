@@ -79,47 +79,42 @@ public class Player_Controller : MonoBehaviour {
 			}
 		}
 
-        if(Input.GetKey(KeyCode.Escape))
+        //vertical axis (W S)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
-            wanted_mode = CursorLockMode.None;
+            float current_speed = base_speed;
+            if (controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
+            {
+                current_speed += crawl_mod;
+            }
+            else if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+            {
+                current_speed += run_mod;
+            }
+            //use transform.forward without y axis
+            Vector3 movement = transform.forward * ((Input.GetAxis("Vertical") * current_speed) * Time.deltaTime);
+            movement.y = 0;
+            controller.Move(movement);
+        }
+        //horizontal axis (A D)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            float current_strafe_speed = strafe_speed;
+            if (controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
+            {
+                current_strafe_speed += crawl_mod;
+            }
+            else if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+            {
+                current_strafe_speed += run_mod;
+            }
+            //use transform.right without y axis
+            Vector3 movement = transform.right * ((Input.GetAxis("Horizontal") * current_strafe_speed) * Time.deltaTime);
+            movement.y = 0;
+            controller.Move(movement);
         }
 
-		//vertical axis (W S)
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-		{
-			float current_speed = base_speed;
-			if (controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
-			{
-				current_speed += crawl_mod;
-			}
-			else if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
-			{
-				current_speed += run_mod;
-			}
-			//use transform.forward without y axis
-			Vector3 movement = transform.forward * ((Input.GetAxis("Vertical") * current_speed) * Time.deltaTime);
-			movement.y = 0;
-			controller.Move(movement);
-		}
-		//horizontal axis (A D)
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-		{
-			float current_strafe_speed = strafe_speed;
-			if (controller.isGrounded && Input.GetKey(KeyCode.LeftControl))
-			{
-				current_strafe_speed += crawl_mod;
-			}
-			else if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
-			{
-				current_strafe_speed += run_mod;
-			}
-			//use transform.right without y axis
-			Vector3 movement = transform.right * ((Input.GetAxis("Horizontal") * current_strafe_speed) * Time.deltaTime);
-			movement.y = 0;
-			controller.Move(movement);
-		}
-
-		float up_amount = current_jump_force * Time.deltaTime;
+        float up_amount = current_jump_force * Time.deltaTime;
         if (!grapple_hook.hook_shot || grapple_hook.grabbed_object == null)
         {
             controller.Move(new Vector3(0, up_amount, 0));
@@ -128,48 +123,46 @@ public class Player_Controller : MonoBehaviour {
         {
             current_jump_force = launch_velocity;
         }
-		current_jump_force -= (gravity * Time.deltaTime);
+        current_jump_force -= (gravity * Time.deltaTime);
 
 
-		
-		//mouse
+
+        //mouse
         Cursor.lockState = wanted_mode;
 
-		// Allow the script to clamp based on a desired target value.
-		var targetOrientation = Quaternion.Euler(targetDirection);
-		var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);
+        // Allow the script to clamp based on a desired target value.
+        var targetOrientation = Quaternion.Euler(targetDirection);
+        var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);
 
-		// Get raw mouse input for a cleaner reading on more sensitive mice.
-		var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        // Get raw mouse input for a cleaner reading on more sensitive mice.
+        var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-		// Scale input against the sensitivity setting and multiply that against the smoothing value.
-		mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
+        // Scale input against the sensitivity setting and multiply that against the smoothing value.
+        mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
 
-		// Interpolate mouse movement over time to apply smoothing delta.
-		_smoothMouse.x = Mathf.Lerp(_smoothMouse.x, mouseDelta.x, 1f / smoothing.x);
-		_smoothMouse.y = Mathf.Lerp(_smoothMouse.y, mouseDelta.y, 1f / smoothing.y);
+        // Interpolate mouse movement over time to apply smoothing delta.
+        _smoothMouse.x = Mathf.Lerp(_smoothMouse.x, mouseDelta.x, 1f / smoothing.x);
+        _smoothMouse.y = Mathf.Lerp(_smoothMouse.y, mouseDelta.y, 1f / smoothing.y);
 
-		// Find the absolute mouse movement value from point zero.
-		_mouseAbsolute += _smoothMouse;
+        // Find the absolute mouse movement value from point zero.
+        _mouseAbsolute += _smoothMouse;
 
-		// Clamp and apply the local x value first, so as not to be affected by world transforms.
-		if (clampInDegrees.x < 360)
-			_mouseAbsolute.x = Mathf.Clamp(_mouseAbsolute.x, -clampInDegrees.x * 0.5f, clampInDegrees.x * 0.5f);
+        // Clamp and apply the local x value first, so as not to be affected by world transforms.
+        if (clampInDegrees.x < 360)
+            _mouseAbsolute.x = Mathf.Clamp(_mouseAbsolute.x, -clampInDegrees.x * 0.5f, clampInDegrees.x * 0.5f);
 
-		var xRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right);
-		transform.localRotation = xRotation;
+        var xRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right);
+        transform.localRotation = xRotation;
 
-		// Then clamp and apply the global y value.
-		if (clampInDegrees.y < 360)
-			_mouseAbsolute.y = Mathf.Clamp(_mouseAbsolute.y, -clampInDegrees.y * 0.5f, clampInDegrees.y * 0.5f);
+        // Then clamp and apply the global y value.
+        if (clampInDegrees.y < 360)
+            _mouseAbsolute.y = Mathf.Clamp(_mouseAbsolute.y, -clampInDegrees.y * 0.5f, clampInDegrees.y * 0.5f);
 
-		transform.localRotation *= targetOrientation;
+        transform.localRotation *= targetOrientation;
 
 
-		var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
-		transform.localRotation *= yRotation;
-		
-		
+        var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
+        transform.localRotation *= yRotation;
 	}
 
     void Go_To_Spawn()
