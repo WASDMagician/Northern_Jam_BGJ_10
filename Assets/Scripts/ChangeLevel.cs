@@ -4,19 +4,19 @@ using System.Collections;
 
 public class ChangeLevel : MonoBehaviour {
 
-    Animator animator;
+    public Animator animator;
     public Text text;
     public string level_name = "";
     public int level_num = -1;
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GameObject.FindGameObjectWithTag("FadeLevel").GetComponent<Animator>();
     }
 
     IEnumerator FadeOutLevel()
     {
-        text.text = "Gem collected!";
+        //text.text = "Gem collected!";
         FadeOut();
         yield return new WaitForSeconds(1.5f);
         Load_Level();
@@ -56,7 +56,8 @@ public class ChangeLevel : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        FadeOutLevel();
+        Debug.Log("test");
+        StartCoroutine(FadeOutLevel());
     }
     
 }
