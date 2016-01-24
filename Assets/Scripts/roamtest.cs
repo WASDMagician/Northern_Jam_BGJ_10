@@ -14,7 +14,7 @@ public class roamtest : MonoBehaviour {
     public bool playerSpotted = false;
     private int counter;
 
-    private Player_Controller player_controller;
+    public Player_Controller player_controller;
 
     void Start () {
         agent = GetComponent<NavMeshAgent>();
