@@ -5928,10 +5928,9 @@ MonoBehaviour:
   parent_object: {fileID: 1498669123}
   grabbed_object: {fileID: 0}
   max_distance: 25
-  speed: 15
+  speed: 30
   has_fired: 0
-  snap_distance: 0.5
-  hook_distance: 0
+  snap_distance: 2
   hook_shot: 0
   pull_shot: 0
 --- !u!54 &837591262
