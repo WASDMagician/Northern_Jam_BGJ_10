@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b586a21b49496704cad40adf250f7577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapple_hook: {fileID: 0}
+  grapple_hook: {fileID: 11426306}
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 0
   sensitivity: {x: 2, y: 2}
@@ -340,10 +340,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fefbc80547c11846859581b165a89e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent_object: {fileID: 167008}
+  grabbed_object: {fileID: 0}
   max_distance: 25
   speed: 15
   has_fired: 0
-  snap_distance: 0.5
+  snap_distance: 4
+  hook_distance: 2
+  hook_shot: 0
+  pull_shot: 0
 --- !u!124 &12416852
 Behaviour:
   m_ObjectHideFlags: 1
