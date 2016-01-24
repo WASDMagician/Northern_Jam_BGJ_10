@@ -4,6 +4,12 @@ using System.Collections;
 public class DamageCollision : MonoBehaviour {
 
     RaycastHit hit;
+    public PlayerHealth pHealth;
+
+    void Awake()
+    {
+        pHealth = GameObject.FindGameObjectWithTag("Player").GetComponentInParent<PlayerHealth>();
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -15,7 +21,7 @@ public class DamageCollision : MonoBehaviour {
             {
                 if (hit.transform.CompareTag("Player"))
                 {
-                    Debug.Log("Damage Player");
+                    pHealth.damage(1);
                 }
             }
         }

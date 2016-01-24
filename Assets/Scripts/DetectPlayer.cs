@@ -4,12 +4,12 @@ using System.Collections.Generic;
 public class DetectPlayer : MonoBehaviour
 {
     RaycastHit hit;
-    public roamtest enemy;
+    public Enemy enemy;
 
     void Awake()
     {
         //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<roamtest>();
-        enemy = this.gameObject.GetComponentInParent<roamtest>();
+        enemy = this.gameObject.GetComponentInParent<Enemy>();
     }
 
     void OnTriggerEnter(Collider other)

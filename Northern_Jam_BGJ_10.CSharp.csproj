@@ -78,14 +78,13 @@
     <Compile Include="Assets\Scripts\DamageCollision.cs" />
     <Compile Include="Assets\Scripts\DetectPlayer.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform\PlatformLever.cs" />
     <Compile Include="Assets\Scripts\OpenDoors.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player_Controller.cs" />
     <Compile Include="Assets\Scripts\WSTextLookAt.cs" />
     <Compile Include="Assets\Scripts\grapple_hook_control.cs" />
-    <Compile Include="Assets\Scripts\roamtest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
