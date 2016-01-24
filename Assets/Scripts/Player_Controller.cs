@@ -101,12 +101,14 @@ public class Player_Controller : MonoBehaviour {
 			controller.Move(movement);
 		}
 
-
-
 		float up_amount = current_jump_force * Time.deltaTime;
         if (!grapple_hook.hook_shot)
         {
             controller.Move(new Vector3(0, up_amount, 0));
+        }
+        else
+        {
+            current_jump_force = 0;
         }
 		current_jump_force -= (gravity * Time.deltaTime);
 
