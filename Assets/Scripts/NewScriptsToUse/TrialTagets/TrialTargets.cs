@@ -8,6 +8,7 @@ public class TrialTargets : MonoBehaviour {
     private Collider col;
     private bool isActivated;
     private bool passed;
+    private bool wait;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class TrialTargets : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("GrappleHook") && isActivated == false && passed == false)
+        if (other.CompareTag("GrappleHook") && isActivated == false && passed == false && wait == false)
         {
             isActivated = true;
             rend.material.color = Color.green;
@@ -34,6 +35,13 @@ public class TrialTargets : MonoBehaviour {
         col.enabled = true;
     }
 
+    public void Wait(int time)
+    {
+        wait = true;
+        rend.material.color = Color.gray;
+        Invoke("ReActivate", time);
+    }
+
     public bool IsActivated()
     {
         return isActivated;
@@ -43,5 +51,11 @@ public class TrialTargets : MonoBehaviour {
     {
         passed = true;
         rend.material.color = Color.black;
+    }
+
+    void ReActivate()
+    {
+        wait = false;
+        Reset();
     }
 }
