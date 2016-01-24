@@ -46,16 +46,20 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ChangeLevel.cs" />
+     <Compile Include="Assets\Scripts\DamageCollision.cs" />
      <Compile Include="Assets\Scripts\DetectPlayer.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
-     <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\MovingPlatform\MovingPlatform.cs" />
      <Compile Include="Assets\Scripts\MovingPlatform\PlatformLever.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\Button.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\SlidingPlatform.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\TrialController.cs" />
+     <Compile Include="Assets\Scripts\NewScriptsToUse\TrialTagets\TrialTargets.cs" />
      <Compile Include="Assets\Scripts\OpenDoors.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player_Controller.cs" />
      <Compile Include="Assets\Scripts\WSTextLookAt.cs" />
      <Compile Include="Assets\Scripts\grapple_hook_control.cs" />
-     <Compile Include="Assets\Scripts\roamtest.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Pullable
   - Hookable
+  - GrappleHook
   layers:
   - Default
   - TransparentFX

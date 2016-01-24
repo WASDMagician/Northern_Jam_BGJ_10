@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northern_Jam_BGJ_10.CSharp", "Northern_Jam_BGJ_10.CSharp.csproj", "{4091EC94-0B0A-BB54-70EE-0975DEA5F29B}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F0504DF1-8264-6513-4C47-2255BDC57ACA}") = "Northern_Jam_BGJ_10", "Assembly-CSharp.csproj", "{693819ED-928E-CB89-AE44-DE4C994E1009}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4091EC94-0B0A-BB54-70EE-0975DEA5F29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4091EC94-0B0A-BB54-70EE-0975DEA5F29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4091EC94-0B0A-BB54-70EE-0975DEA5F29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4091EC94-0B0A-BB54-70EE-0975DEA5F29B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693819ED-928E-CB89-AE44-DE4C994E1009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693819ED-928E-CB89-AE44-DE4C994E1009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693819ED-928E-CB89-AE44-DE4C994E1009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693819ED-928E-CB89-AE44-DE4C994E1009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
