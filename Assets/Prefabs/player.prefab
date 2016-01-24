@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.61, y: 10.24, z: 0.03}
+  m_LocalPosition: {x: 12.61, y: 6.5, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447986}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent_object: {fileID: 167008}
   grabbed_object: {fileID: 0}
-  max_distance: 20
+  max_distance: 25
   speed: 30
   has_fired: 0
   snap_distance: 2
