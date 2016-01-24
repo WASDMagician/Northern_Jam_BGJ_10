@@ -15,9 +15,19 @@ public class TrialController : MonoBehaviour
     private bool timerActive;
     private bool passed;
 
-	void Start ()
+    // bar
+    public RectTransform ProgressBarTransform;
+    private float ProgressBarY;
+    private float minimumProgressBarX;
+    private float maximumProgressBarX;
+    private int curProg;
+
+    void Start ()
     {
+        curProg = 0;
         maxTime = time;
+        InitializeBar();
+        UpdateProgressBar();
         screenCanvas.SetActive(false);
     }
 	
@@ -25,7 +35,18 @@ public class TrialController : MonoBehaviour
     {
         if(passed == false)
         {
-            if(trialTargets[0].IsActivated() || trialTargets[1].IsActivated() || trialTargets[2].IsActivated())
+            if (trialTargets[0].IsActivated() && trialTargets[1].IsActivated() && trialTargets[2].IsActivated())
+            {
+                time = 0.0f;
+                passed = true;
+                timerActive = false;
+            }
+            /*else if(trialTargets[0].IsActivated() && trialTargets[1].IsActivated() || trialTargets[1].IsActivated() && trialTargets[2].IsActivated() || trialTargets[0].IsActivated() && trialTargets[2].IsActivated())
+            {
+                curProg++;
+
+            }
+            else if(trialTargets[0].IsActivated() || trialTargets[1].IsActivated() || trialTargets[2].IsActivated())
             {
                 if(timerActive == false)
                 {
@@ -33,14 +54,7 @@ public class TrialController : MonoBehaviour
                     screenCanvas.SetActive(true);
                     InvokeRepeating("Timer", 0, 0.01f);
                 }
-            }
-
-            if (trialTargets[0].IsActivated() && trialTargets[1].IsActivated() && trialTargets[2].IsActivated())
-            {
-                time = 0.0f;
-                passed = true;
-                timerActive = false;
-            }
+            }*/
             if(timerActive == true)
             {
                 timerText.text = "Time Left : " + (time * 1000).ToString("00:000");
@@ -69,5 +83,32 @@ public class TrialController : MonoBehaviour
     void KillCanvas()
     {
         screenCanvas.SetActive(false);
+    }
+
+
+    void InitializeBar()
+    {
+        ProgressBarY = ProgressBarTransform.localPosition.y;
+        minimumProgressBarX = ProgressBarTransform.localPosition.x - ProgressBarTransform.rect.width;
+        maximumProgressBarX = ProgressBarTransform.localPosition.x;
+    }
+
+    void UpdateProgressBar()
+    {
+        float currentXValue;
+        currentXValue = (3 - curProg) * (minimumProgressBarX - maximumProgressBarX) / (3 - 0) + maximumProgressBarX;
+        ProgressBarTransform.localPosition = new Vector3(currentXValue, ProgressBarY);
+    }
+
+    public void incProgress()
+    {
+        if (timerActive == false)
+        {
+            timerActive = true;
+            screenCanvas.SetActive(true);
+            InvokeRepeating("Timer", 0, 0.01f);
+        }
+        curProg++;
+        UpdateProgressBar();
     }
 }

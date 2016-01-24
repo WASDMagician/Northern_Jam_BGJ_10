@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TrialTargets : MonoBehaviour {
 
+    public TrialController trialCont;
     private Renderer rend;
     private Collider col;
     private bool isActivated;
@@ -22,6 +23,7 @@ public class TrialTargets : MonoBehaviour {
             isActivated = true;
             rend.material.color = Color.green;
             col.enabled = false;
+            trialCont.incProgress();
         }
     }
 
