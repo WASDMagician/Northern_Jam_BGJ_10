@@ -17,6 +17,7 @@ public class Player_Controller : MonoBehaviour {
 	public Vector2 smoothing = new Vector2(3, 3); //smoothing amount
 	public Vector2 targetDirection;
 	public Vector2 targetCharacterDirection;
+    CursorLockMode wanted_mode;
 
 	//movement
 	public float base_speed; //base forward speed
@@ -31,6 +32,7 @@ public class Player_Controller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        wanted_mode = CursorLockMode.Locked;
 		targetDirection = transform.localRotation.eulerAngles;
 		controller = GetComponent<CharacterController>();
 	}
@@ -68,6 +70,11 @@ public class Player_Controller : MonoBehaviour {
 			}
 		}
 
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            wanted_mode = CursorLockMode.None;
+        }
+
 		//vertical axis (W S)
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
 		{
@@ -104,7 +111,7 @@ public class Player_Controller : MonoBehaviour {
 		}
 
 		float up_amount = current_jump_force * Time.deltaTime;
-        if (!grapple_hook.hook_shot)
+        if (!grapple_hook.hook_shot || grapple_hook.grabbed_object == null)
         {
             controller.Move(new Vector3(0, up_amount, 0));
         }
@@ -117,7 +124,7 @@ public class Player_Controller : MonoBehaviour {
 
 		
 		//mouse
-		Screen.lockCursor = lockCursor;
+        Cursor.lockState = wanted_mode;
 
 		// Allow the script to clamp based on a desired target value.
 		var targetOrientation = Quaternion.Euler(targetDirection);

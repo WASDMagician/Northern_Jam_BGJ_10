@@ -15,7 +15,7 @@ public class grapple_hook_control : MonoBehaviour
     public float speed;
     public bool has_fired;
     public float snap_distance;
-    public float hook_distance;
+
     bool extending;
     bool retracting;
 
@@ -35,17 +35,33 @@ public class grapple_hook_control : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             hook_shot = false;
             pull_shot = true;
             Fire();
         }
-        else if (Input.GetButton("Fire2"))
+        else if(Input.GetButtonUp("Fire1"))
+        {
+            hook_shot = false;
+            pull_shot = false;
+            grabbed_object = null;
+            has_fired = false;
+            Reset_Hook_Position();
+        }
+        else if (Input.GetButtonDown("Fire2"))
         {
             hook_shot = true;
             pull_shot = false;
             Fire();
+        }
+        else if(Input.GetButtonUp("Fire2"))
+        {
+            hook_shot = false;
+            pull_shot = false;
+            grabbed_object = null;
+            has_fired = false;
+            Reset_Hook_Position();
         }
 
         if (has_fired)
@@ -56,7 +72,7 @@ public class grapple_hook_control : MonoBehaviour
 
     public void Fire()
     {
-        if (has_fired == false)
+        if (has_fired == false || retracting == true)
         {
             has_fired = true;
             extending = true;
@@ -107,7 +123,7 @@ public class grapple_hook_control : MonoBehaviour
         distance = Vector3.Distance(transform.position, parent_pos.position);
         transform.position -= parent_pos.forward * (speed * Time.deltaTime);
 
-        if (distance < hook_distance)
+        if (distance < snap_distance)
         {
             extending = false;
             retracting = false;
@@ -134,7 +150,7 @@ public class grapple_hook_control : MonoBehaviour
         distance = Vector3.Distance(parent_object.transform.position, grabbed_object.transform.position);
         parent_object.transform.position = Vector3.Lerp(parent_object.transform.position, grabbed_object.transform.position, Time.deltaTime * 1.0f);
         print(distance);
-        if (distance < hook_distance)
+        if (distance < snap_distance)
         {
             extending = false;
             retracting = false;
@@ -145,6 +161,11 @@ public class grapple_hook_control : MonoBehaviour
             transform.position = parent_pos.position;
         }
 
+    }
+
+    void Reset_Hook_Position()
+    {
+        transform.position = transform.parent.transform.position;
     }
 
     void OnTriggerEnter(Collider col)
