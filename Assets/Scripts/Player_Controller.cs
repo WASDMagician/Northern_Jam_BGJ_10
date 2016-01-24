@@ -6,6 +6,7 @@ public class Player_Controller : MonoBehaviour {
     public Texture2D crosshair;
 
 	public grapple_hook_control grapple_hook;
+    PlayerHealth health;
 
 	//mouse movement
 	Vector2 _mouseAbsolute;
@@ -36,12 +37,19 @@ public class Player_Controller : MonoBehaviour {
         wanted_mode = CursorLockMode.Locked;
 		targetDirection = transform.localRotation.eulerAngles;
 		controller = GetComponent<CharacterController>();
+        health = GetComponent<PlayerHealth>();
+        Go_To_Spawn();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Handle_Input();
 		Handle_Ground();
+        if(health.getHealth() <= 0)
+        {
+            Go_To_Spawn();
+            health.setHealth(100);
+        }
 	}
 
 	void Handle_Ground()
@@ -163,6 +171,11 @@ public class Player_Controller : MonoBehaviour {
 		
 		
 	}
+
+    void Go_To_Spawn()
+    {
+        transform.position = GameObject.FindGameObjectWithTag("Spawn_Point").transform.position;
+    }
 
     void OnGUI()
     {
