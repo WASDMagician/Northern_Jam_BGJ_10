@@ -113,6 +113,8 @@ public class grapple_hook_control : MonoBehaviour
             retracting = false;
             has_fired = false;
             grabbed_object = null;
+            hook_shot = false;
+            pull_shot = false;
             transform.position = parent_pos.position;
         }
     }
@@ -129,7 +131,20 @@ public class grapple_hook_control : MonoBehaviour
         //target is grabbed object
         //move player object toward grabbed object
         //parent_object.transform.position += new Vector3(0, 10, 0);
-        parent_object.transform.position += grabbed_object.transform.forward * (speed * Time.deltaTime);
+        distance = Vector3.Distance(parent_object.transform.position, grabbed_object.transform.position);
+        parent_object.transform.position = Vector3.Lerp(parent_object.transform.position, grabbed_object.transform.position, Time.deltaTime * 1.0f);
+        print(distance);
+        if (distance < hook_distance)
+        {
+            extending = false;
+            retracting = false;
+            has_fired = false;
+            grabbed_object = null;
+            hook_shot = false;
+            pull_shot = false;
+            transform.position = parent_pos.position;
+        }
+
     }
 
     void OnTriggerEnter(Collider col)

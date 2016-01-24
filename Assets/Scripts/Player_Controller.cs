@@ -41,10 +41,7 @@ public class Player_Controller : MonoBehaviour {
 
 	void Handle_Ground()
 	{
-        if (grapple_hook.hook_shot)
-        {
-        }
-        else
+       if (!grapple_hook.hook_shot)
         {
             if (!controller.isGrounded)
             {
@@ -107,7 +104,10 @@ public class Player_Controller : MonoBehaviour {
 
 
 		float up_amount = current_jump_force * Time.deltaTime;
-		controller.Move(new Vector3(0, up_amount, 0));
+        if (!grapple_hook.hook_shot)
+        {
+            controller.Move(new Vector3(0, up_amount, 0));
+        }
 		current_jump_force -= (gravity * Time.deltaTime);
 
 

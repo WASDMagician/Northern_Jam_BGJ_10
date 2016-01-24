@@ -1257,7 +1257,7 @@ Prefab:
     - target: {fileID: 11426306, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
       propertyPath: parent_object
       value: 
-      objectReference: {fileID: 1345226099}
+      objectReference: {fileID: 2019528715}
     - target: {fileID: 11426306, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
       propertyPath: snap_distance
       value: 4
@@ -2079,3 +2079,7 @@ Transform:
   - {fileID: 206474077}
   m_Father: {fileID: 1374051959}
   m_RootOrder: 2
+--- !u!1 &2019528715 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 167008, guid: b423a93b237a75a44a13adf953c665a8, type: 2}
+  m_PrefabInternal: {fileID: 1138663881}
